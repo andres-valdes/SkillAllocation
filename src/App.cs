@@ -2,15 +2,15 @@ using BepInEx;
 using HarmonyLib;
 using System.Reflection;
 
-namespace Ratzu.AutoShield;
+namespace Ratzu.SkillAllocation;
 
 [BepInPlugin(Guid, Name, Version)]
-public class ReviveAllies : BaseUnityPlugin
+public class SkillAllocation : BaseUnityPlugin
 {
     public const string Version = "1.0.0";
-    public const string Name = "AutoShield";
-    public const string Guid = "ratzu.mods.autoshield";
-    public const string Namespace = "Ratzu" + nameof(AutoShield);
+    public const string Name = "Skill Allocation";
+    public const string Guid = "ratzu.mods.skillallocation";
+    public const string Namespace = "Ratzu" + nameof(SkillAllocation);
 
     private Harmony _harmony;
 

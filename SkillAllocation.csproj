@@ -8,8 +8,8 @@
     <ProjectGuid>{98679114-B256-4E33-BC5D-E532D621AE3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AutoShield</RootNamespace>
-    <AssemblyName>AutoShield</AssemblyName>
+    <RootNamespace>SkillAllocation</RootNamespace>
+    <AssemblyName>SkillAllocation</AssemblyName>
     <TargetFramework>net481</TargetFramework>
     <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
     <FileAlignment>512</FileAlignment>
@@ -42,6 +42,9 @@
     <Reference Include="0Harmony">
       <HintPath>C:\Users\andre\Code\Mods\BepInEx\Revival\ReviveAllies\Libraries\0Harmony.dll</HintPath>
     </Reference>
+    <Reference Include="assembly_utils">
+      <HintPath>D:\SteamLibrary\steamapps\common\Valheim\valheim_Data\Managed\assembly_utils.dll</HintPath>
+    </Reference>
     <Reference Include="assembly_valheim_publicized, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\andre\Code\Mods\BepInEx\Revival\ReviveAllies\Libraries\assembly_valheim_publicized.dll</HintPath>
@@ -58,7 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\App.cs" />
-    <Compile Include="src\patches\Humanoid_Patch.cs" />
+    <Compile Include="src\experience\DroppedExperience.cs" />
+    <Compile Include="src\experience\ExperiencePool.cs" />
+    <Compile Include="src\experience\SkillAllocator.cs" />
+    <Compile Include="src\patches\Player_Patch.cs" />
+    <Compile Include="src\patches\Skills_Patch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
