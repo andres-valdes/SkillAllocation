@@ -23,18 +23,12 @@ public class ExperiencePool : MonoBehaviour
 
     public void Load(ZPackage pkg)
     {
-        // Load experience pool from save data
-        int version = pkg.ReadInt();
-        if (version >= 1) {
-            _experience = pkg.ReadDouble();
-        }
+       // implement saving
     }
 
     public void Save(ZPackage pkg)
     {
-        // Version number, for backwards compatibility
-        pkg.Write(1);
-        pkg.Write(_experience);
+        // implement saving
     }
 
     public Player GetPlayer()

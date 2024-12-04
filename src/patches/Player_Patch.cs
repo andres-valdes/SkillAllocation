@@ -20,7 +20,7 @@ public class Player_Patch
     {
         public static bool Prefix(Player __instance, ref Skills.SkillType skill, ref float value)
         {
-            __instance.GetComponent<ExperiencePool>().AddExperience((int)Math.Floor(value));
+            __instance.GetComponent<ExperiencePool>().AddExperience(Math.Ceiling(value));
             return false;
         }
     }
@@ -45,12 +45,10 @@ public class Player_Patch
         public static void Postfix(Player __instance)
         {
             DroppedExperience.GetDroppedExperience(__instance.GetPlayerID())?.SetOwnerHasDied(true);
-            if (__instance.GetComponent<ExperiencePool>().GetExperience() > 0)
+            if (__instance.GetComponent<ExperiencePool>()?.GetExperience() > 0)
             {
-                // TODO: Create prefab
-                GameObject gameObject = UnityEngine.Object.Instantiate(ZNetScene.instance.GetPrefab("DroppedExperience"), __instance.transform.position, Quaternion.identity);
-                gameObject.GetComponent<DroppedExperience>().SetExperience(__instance.GetComponent<ExperiencePool>().GetExperience());
-                gameObject.GetComponent<DroppedExperience>().SetOwner(__instance);
+                GameObject gameObject = UnityEngine.Object.Instantiate(ZNetScene.instance.GetPrefab(App.DroppedExperienceObj.name.GetStableHashCode()), new Vector3(__instance.transform.position.x, __instance.transform.position.y + 2, __instance.transform.position.z), Quaternion.identity);
+                gameObject.AddComponent<DroppedExperience>().Setup(__instance.GetComponent<ExperiencePool>().GetExperience(), __instance);
             }
         }
     }

@@ -52,6 +52,7 @@ public class DroppedExperience : MonoBehaviour, Interactable, Hoverable
             return;
         }
         drops.Remove(ownerID);
+        ZNetScene.instance.Destroy(gameObject);
     }
 
     public void Setup(double experience, Player owner)
@@ -72,12 +73,17 @@ public class DroppedExperience : MonoBehaviour, Interactable, Hoverable
         m_nview.GetZDO().Set(ZDO_EXPERIENCE, (int)experience);
     }
 
+    public double GetExperience() {
+        return m_nview.GetZDO().GetInt(ZDO_EXPERIENCE);
+    }
+
     public bool Interact(Humanoid humanoid, bool hold, bool alt)
     {
         if (humanoid is Player player) {
             if (GetOwnerID() == player.GetPlayerID()) {
-                player.GetComponent<ExperiencePool>().AddExperience(m_nview.GetZDO().GetInt(ZDO_EXPERIENCE));
+                player.GetComponent<ExperiencePool>().AddExperience(GetExperience());
                 m_nview.GetZDO().Set(ZDO_HAS_BEEN_CLAIMED, true);
+                player.Message(MessageHud.MessageType.TopLeft, "Recovered " + GetExperience() + " XP", 0, null);
                 Cleanup();
                 return true;
             }

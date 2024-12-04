@@ -58,6 +58,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>D:\SteamLibrary\steamapps\common\Valheim\valheim_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>c:\Users\andre\Code\Unity\2022.3.50f1\Editor\Data\PlaybackEngines\windowsstandalonesupport\Variations\win64_player_nondevelopment_mono\Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\App.cs" />
@@ -66,6 +69,12 @@
     <Compile Include="src\experience\SkillAllocator.cs" />
     <Compile Include="src\patches\Player_Patch.cs" />
     <Compile Include="src\patches\Skills_Patch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="newbundle" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\Libraries\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
