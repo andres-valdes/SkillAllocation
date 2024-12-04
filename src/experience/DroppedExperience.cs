@@ -29,6 +29,13 @@ public class DroppedExperience : MonoBehaviour, Interactable, Hoverable
         {
             return;
         }
+        long ownerID = GetOwnerID();
+        if (ownerID == 0L) {
+            return;
+        }
+        if (!drops.ContainsKey(ownerID)) {
+            drops.Add(ownerID, this);
+        }
         if (HasOwnerDied() || HasBeenClaimed()) {
             Cleanup();
         }
